@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚡ MULAA SIGIL XMD • FUTURISTIC QR INTERFACE</title>
+    <style>
+        /* ===== MULAA COMPANY FUTURISTIC DESIGN SYSTEM ===== */
+        :root {
+            --mulaa-purple: #4A2C5F;
+            --mulaa-purple-glow: #6B3FA0;
+            --mulaa-gold: #D4AF37;
+            --mulaa-gold-glow: #FFD700;
+            --mulaa-teal: #5F9EA0;
+            --mulaa-teal-glow: #40E0D0;
+            --mulaa-dark: #0a0a0f;
+            --mulaa-darker: #050508;
+            --glass-bg: rgba(74, 44, 95, 0.2);
+            --glass-border: rgba(212, 175, 55, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Arial', sans-serif;
+            background: var(--mulaa-darker);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* ===== ANIMATED CYBER BACKGROUND ===== */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(74, 44, 95, 0.4) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(95, 158, 160, 0.3) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(212, 175, 55, 0.2) 0%, transparent 50%);
+            z-index: -2;
+            animation: gradientShift 15s ease infinite;
+        }
+
+        /* ===== FUTURISTIC GRID OVERLAY ===== */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(212, 175, 55, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(74, 44, 95, 0.05) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: -1;
+            animation: gridPulse 4s infinite;
+        }
+
+        /* ===== FLOATING PARTICLES ===== */
+        .particle {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: var(--mulaa-gold);
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.5;
+            animation: floatParticle 10s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes floatParticle {
+            0% { transform: translateY(100vh) translateX(0); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(-100vh) translateX(100px); opacity: 0; }
+        }
+
+        /* ===== MAIN CONTAINER - HOLOGRAPHIC CARD ===== */
+        .container {
+            max-width: 550px;
+            width: 100%;
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 40px;
+            padding: 40px 30px;
+            box-shadow: 
+                0 0 40px rgba(74, 44, 95, 0.5),
+                0 0 80px rgba(212, 175, 55, 0.3),
+                inset 0 0 20px rgba(95, 158, 160, 0.2);
+            border: 2px solid var(--glass-border);
+            position: relative;
+            overflow: hidden;
+            animation: containerGlow 4s infinite;
+        }
+
+        /* ===== HOLOGRAPHIC EDGE EFFECT ===== */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, 
+                var(--mulaa-purple), 
+                var(--mulaa-gold), 
+                var(--mulaa-teal), 
+                var(--mulaa-purple));
+            border-radius: 42px;
+            z-index: -2;
+            animation: borderRotate 8s linear infinite;
+            opacity: 0.5;
+        }
+
+        /* ===== SCANNING LINE ANIMATION ===== */
+        .scanning-line {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                var(--mulaa-gold), 
+                var(--mulaa-teal), 
+                var(--mulaa-purple), 
+                transparent);
+            animation: scanLine 6s infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes scanLine {
+            0% { left: -100%; }
+            50% { left: 100%; }
+            100% { left: 100%; }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes gradientShift {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes gridPulse {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        @keyframes containerGlow {
+            0%, 100% { box-shadow: 0 0 40px rgba(74, 44, 95, 0.5), 0 0 80px rgba(212, 175, 55, 0.3); }
+            50% { box-shadow: 0 0 60px rgba(95, 158, 160, 0.6), 0 0 100px rgba(212, 175, 55, 0.5); }
+        }
+
+        @keyframes borderRotate {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        @keyframes textGlow {
+            0%, 100% { text-shadow: 0 0 20px var(--mulaa-gold), 0 0 40px var(--mulaa-purple); }
+            50% { text-shadow: 0 0 30px var(--mulaa-teal), 0 0 60px var(--mulaa-gold); }
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 5px;
+            background: linear-gradient(135deg, 
+                var(--mulaa-gold) 0%, 
+                var(--mulaa-teal) 50%, 
+                var(--mulaa-purple) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: textGlow 4s infinite;
+            letter-spacing: 2px;
+            word-wrap: break-word;
+            position: relative;
+        }
+
+        .subtitle {
+            margin-bottom: 30px;
+            opacity: 0.9;
+            font-size: 1.1em;
+            color: rgba(255,255,255,0.9);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding-bottom: 15px;
+        }
+
+        /* ===== STATUS CARD - HOLOGRAPHIC ===== */
+        .status-card {
+            background: rgba(10, 10, 15, 0.7);
+            backdrop-filter: blur(5px);
+            border-radius: 25px;
+            padding: 25px 20px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .status-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, rgba(212, 175, 55, 0.1), transparent);
+            pointer-events: none;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .status-badge::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, 
+                transparent, 
+                rgba(255,255,255,0.3), 
+                transparent);
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            20%, 100% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        .connected {
+            background: linear-gradient(135deg, #00FF00, #00CC00);
+            box-shadow: 0 0 20px #00FF00;
+        }
+
+        .qr-ready {
+            background: linear-gradient(135deg, var(--mulaa-teal), var(--mulaa-purple));
+            box-shadow: 0 0 20px var(--mulaa-teal);
+        }
+
+        .connecting {
+            background: linear-gradient(135deg, #FFA500, #FF8C00);
+            box-shadow: 0 0 20px #FFA500;
+        }
+
+        .disconnected {
+            background: linear-gradient(135deg, #FF4444, #CC0000);
+            box-shadow: 0 0 20px #FF4444;
+        }
+
+        /* ===== QR SECTION ===== */
+        #qrSection {
+            animation: fadeIn 0.5s ease;
+        }
+
+        .qr-container {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(5px);
+            padding: 25px;
+            border-radius: 30px;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 350px;
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .qr-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.2), transparent);
+            animation: pulseQr 2s infinite;
+        }
+
+        @keyframes pulseQr {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+        }
+
+        #qrImage {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
+            animation: qrFloat 3s infinite;
+        }
+
+        @keyframes qrFloat {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-5px) scale(1.02); }
+        }
+
+        .qr-placeholder {
+            color: rgba(255,255,255,0.7);
+            font-size: 1.2em;
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+
+        /* ===== INSTRUCTIONS CARD ===== */
+        .instructions {
+            background: rgba(74, 44, 95, 0.3);
+            backdrop-filter: blur(5px);
+            border-radius: 20px;
+            padding: 20px;
+            margin: 25px 0;
+            text-align: left;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            position: relative;
+        }
+
+        .instructions strong {
+            color: var(--mulaa-gold);
+            font-size: 1.2em;
+        }
+
+        .instructions ol {
+            margin-left: 20px;
+            margin-top: 15px;
+        }
+
+        .instructions li {
+            margin: 10px 0;
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* ===== STATS GRID ===== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .stat-item {
+            background: rgba(74, 44, 95, 0.3);
+            backdrop-filter: blur(5px);
+            padding: 15px;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--mulaa-gold);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.8;
+            margin-bottom: 5px;
+        }
+
+        .stat-value {
+            font-size: 1.6em;
+            font-weight: bold;
+            background: linear-gradient(135deg, var(--mulaa-gold), var(--mulaa-teal));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* ===== BUTTONS - FUTURISTIC ===== */
+        .button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin: 25px 0 15px;
+        }
+
+        .button {
+            background: transparent;
+            color: var(--mulaa-gold);
+            border: 2px solid var(--mulaa-gold);
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            flex: 1;
+            max-width: 200px;
+        }
+
+        .button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(212, 175, 55, 0.3), 
+                transparent);
+            transition: left 0.5s;
+        }
+
+        .button:hover {
+            background: var(--mulaa-gold);
+            color: var(--mulaa-dark);
+            box-shadow: 0 0 30px var(--mulaa-gold);
+            transform: translateY(-3px);
+        }
+
+        .button:hover::before {
+            left: 100%;
+        }
+
+        .button.danger {
+            border-color: #FF4444;
+            color: #FF4444;
+        }
+
+        .button.danger:hover {
+            background: #FF4444;
+            color: white;
+            box-shadow: 0 0 30px #FF4444;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            margin-top: 30px;
+            font-size: 1em;
+            color: rgba(255,255,255,0.7);
+            padding-top: 20px;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .footer span {
+            color: var(--mulaa-gold);
+            font-weight: bold;
+        }
+
+        /* ===== UTILITY CLASSES ===== */
+        .hidden {
+            display: none !important;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--mulaa-gold);
+            border-right-color: var(--mulaa-teal);
+            animation: spin 1s cubic-bezier(0.68, -0.55, 0.265, 1.55) infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 500px) {
+            .container { padding: 30px 20px; }
+            h1 { font-size: 2em; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .button-group { flex-direction: column; align-items: center; }
+            .button { max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating particles (generated by JS) -->
+    <div id="particles"></div>
+
+    <div class="container">
+        <div class="scanning-line"></div>
+        
+        <!-- Header -->
+        <h1>⚡ MULAA SIGIL XMD</h1>
+        <div class="subtitle">💜 Technology with Souls and Emotions • 🇧🇼 Gaborone, Botswana</div>
+        
+        <!-- Status Card -->
+        <div class="status-card">
+            <div id="statusBadge" class="status-badge disconnected">🔴 DISCONNECTED</div>
+            <div id="statusMessage" style="font-size: 1.1em;">Initializing quantum interface...</div>
+        </div>
+        
+        <!-- QR Section -->
+        <div id="qrSection">
+            <h3 style="color: var(--mulaa-gold); margin-bottom: 10px;">📱 QUANTUM QR SCAN</h3>
+            <div class="qr-container" id="qrContainer">
+                <div class="loading" id="qrLoading"></div>
+                <div class="qr-placeholder" id="qrPlaceholder">🌀 Initializing quantum scanner...</div>
+                <img id="qrImage" class="hidden" alt="Quantum QR Code">
+            </div>
+            
+            <div class="instructions">
+                <strong>🔮 HOLOGRAPHIC INSTRUCTIONS</strong>
+                <ol>
+                    <li>⚡ Open WhatsApp on your mobile device</li>
+                    <li>💜 Navigate to <strong>Linked Devices</strong> (Menu → Linked Devices)</li>
+                    <li>🏆 Tap <strong>"Link a Device"</strong></li>
+                    <li>🌊 Scan the quantum QR code above</li>
+                    <li>✨ Wait for soul synchronization</li>
+                </ol>
+            </div>
+        </div>
+        
+        <!-- Bot Info Section -->
+        <div id="botInfo" class="hidden">
+            <h3 style="color: var(--mulaa-gold); margin: 20px 0 15px;">📊 QUANTUM METRICS</h3>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-label">Bot Number</div>
+                    <div class="stat-value" id="botNumber">-</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Prefix</div>
+                    <div class="stat-value" id="prefix">.</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Uptime</div>
+                    <div class="stat-value" id="uptime">0s</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Memory</div>
+                    <div class="stat-value" id="memory">0 MB</div>
+                </div>
+            </div>
+            
+            <div style="background: rgba(74, 44, 95, 0.3); padding: 15px; border-radius: 20px; margin: 15px 0; text-align: center;">
+                <div>📨 <span style="color: var(--mulaa-gold);">Messages Received:</span> <span id="received">0</span></div>
+                <div>📤 <span style="color: var(--mulaa-teal);">Messages Sent:</span> <span id="sent">0</span></div>
+            </div>
+        </div>
+        
+        <!-- Action Buttons -->
+        <div class="button-group">
+            <button class="button" onclick="refreshQR()">
+                <i>🔄</i> REFRESH QR
+            </button>
+            <button class="button danger" onclick="logout()">
+                <i>🚪</i> LOGOUT
+            </button>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <div>👑 <span>Amantle Mpaekae (Mulax Prime)</span></div>
+            <div>💜 Mulaa Company • 🏆 Building Legacies • 🌊 Gaborone, Botswana</div>
+            <div style="margin-top: 10px; font-size: 0.9em;">⚡ POWERED BY QUANTUM AI • © 2026</div>
+        </div>
+    </div>
+
+    <script>
+        // ===== CREATE FLOATING PARTICLES =====
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 10 + 's';
+                particle.style.background = i % 3 === 0 ? '#4A2C5F' : (i % 3 === 1 ? '#D4AF37' : '#5F9EA0');
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        let statusCheckInterval;
+        let qrCheckInterval;
+        
+        // ===== CHECK BOT STATUS =====
+        async function checkStatus() {
+            try {
+                const response = await fetch('/api/status');
+                const data = await response.json();
+                
+                const statusBadge = document.getElementById('statusBadge');
+                const statusMessage = document.getElementById('statusMessage');
+                const qrSection = document.getElementById('qrSection');
+                const botInfo = document.getElementById('botInfo');
+                
+                // Update status badge with futuristic messages
+                switch(data.status) {
+                    case 'connected':
+                        statusBadge.className = 'status-badge connected';
+                        statusBadge.innerHTML = '🟢 QUANTUM CONNECTED';
+                        statusMessage.innerHTML = `💜 Soul linked as ${data.botName || 'MULAA SIGIL XMD'}`;
+                        qrSection.classList.add('hidden');
+                        botInfo.classList.remove('hidden');
+                        
+                        // Update bot info
+                        document.getElementById('botNumber').innerHTML = data.ownerNumber || '26778388528';
+                        document.getElementById('prefix').innerHTML = data.prefix || '.';
+                        document.getElementById('uptime').innerHTML = data.uptime + 's';
+                        document.getElementById('memory').innerHTML = data.memory || '128 MB';
+                        document.getElementById('received').innerHTML = data.messages?.received || '1,024';
+                        document.getElementById('sent').innerHTML = data.messages?.sent || '2,048';
+                        break;
+                        
+                    case 'qr_ready':
+                        statusBadge.className = 'status-badge qr-ready';
+                        statusBadge.innerHTML = '🟡 QR QUANTUM READY';
+                        statusMessage.innerHTML = '🌀 Scan holographic QR with WhatsApp';
+                        qrSection.classList.remove('hidden');
+                        botInfo.classList.add('hidden');
+                        break;
+                        
+                    case 'connecting':
+                        statusBadge.className = 'status-badge connecting';
+                        statusBadge.innerHTML = '🟡 QUANTUM CONNECTING';
+                        statusMessage.innerHTML = '🔮 Establishing soul link...';
+                        qrSection.classList.remove('hidden');
+                        botInfo.classList.add('hidden');
+                        break;
+                        
+                    default:
+                        statusBadge.className = 'status-badge disconnected';
+                        statusBadge.innerHTML = '🔴 QUANTUM DISCONNECTED';
+                        statusMessage.innerHTML = '💫 Waiting for quantum signal...';
+                        qrSection.classList.remove('hidden');
+                        botInfo.classList.add('hidden');
+                }
+                
+                return data;
+            } catch (error) {
+                console.error('Error checking status:', error);
+                return null;
+            }
+        }
+        
+        // ===== FETCH QR CODE =====
+        async function fetchQR() {
+            try {
+                document.getElementById('qrLoading').classList.remove('hidden');
+                document.getElementById('qrPlaceholder').classList.add('hidden');
+                document.getElementById('qrImage').classList.add('hidden');
+                
+                const response = await fetch('/api/qr');
+                const data = await response.json();
+                
+                document.getElementById('qrLoading').classList.add('hidden');
+                
+                if (data.success && data.qrDataURL) {
+                    document.getElementById('qrPlaceholder').classList.add('hidden');
+                    const qrImage = document.getElementById('qrImage');
+                    qrImage.src = data.qrDataURL;
+                    qrImage.classList.remove('hidden');
+                } else {
+                    document.getElementById('qrPlaceholder').classList.remove('hidden');
+                    document.getElementById('qrImage').classList.add('hidden');
+                    
+                    if (data.status === 'connected') {
+                        document.getElementById('qrPlaceholder').innerHTML = '✅ Quantum link already established!';
+                    } else {
+                        document.getElementById('qrPlaceholder').innerHTML = '🌀 Generating quantum QR code...';
+                    }
+                }
+            } catch (error) {
+                console.error('Error fetching QR:', error);
+                document.getElementById('qrLoading').classList.add('hidden');
+                document.getElementById('qrPlaceholder').classList.remove('hidden');
+                document.getElementById('qrPlaceholder').innerHTML = '❌ Quantum interference detected';
+            }
+        }
+        
+        // ===== REFRESH QR =====
+        async function refreshQR() {
+            document.getElementById('qrPlaceholder').innerHTML = '🌀 Regenerating quantum code...';
+            await fetchQR();
+        }
+        
+        // ===== LOGOUT =====
+        async function logout() {
+            if (confirm('⚠️ Are you sure you want to terminate quantum link? This will clear your session.')) {
+                try {
+                    const response = await fetch('/api/logout', { method: 'POST' });
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        alert('✅ Quantum link terminated successfully');
+                        await fetchQR();
+                    } else {
+                        alert('❌ Error: ' + data.message);
+                    }
+                } catch (error) {
+                    alert('❌ Quantum interference detected');
+                }
+            }
+        }
+        
+        // ===== INITIALIZE =====
+        createParticles();
+        checkStatus();
+        fetchQR();
+        
+        // Set up intervals
+        statusCheckInterval = setInterval(checkStatus, 3000);
+        qrCheckInterval = setInterval(fetchQR, 5000);
+    </script>
+</body>
+</html>
