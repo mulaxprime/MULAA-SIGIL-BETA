@@ -1,17 +1,1 @@
-// plugins/coinflip.js
-const { cmd } = require("../command");
-
-cmd(
-  {
-    pattern: "coinflip",
-    alias: ["flipcoin"],
-    desc: "Flip a coin and see the result",
-    react: "🪙",
-    category: "fun",
-    filename: __filename,
-  },
-  async (malvin, mek, m, { reply }) => {
-    const result = Math.random() < 0.5 ? "Heads 🪙" : "Tails 🪙";
-    reply(`You flipped a coin and got: *${result}*`);
-  }
-);
+const{cmd:a}=require("../command");a({pattern:"coinflip",alias:["flipcoin"],desc:"Coin flip",react:"🪙",category:"fun",filename:__filename},async(b,c,d,{reply:e})=>{e(`*${Math.random()<0.5?"Heads":"Tails"}* 🪙`)});
